@@ -58,16 +58,16 @@
     .glass {
       background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.7) 0%,
-        rgba(255, 255, 255, 0.5) 100%
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.6) 100%
       );
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       box-shadow: 
         0 8px 32px rgba(146, 38, 4, 0.06),
         0 2px 8px rgba(232, 130, 72, 0.04),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
       position: relative;
       overflow: hidden;
     }
@@ -93,23 +93,24 @@
       z-index: 1;
     }
     
-    /* Hero */
+    /* Hero - MOBILE FIRST */
     .hero {
-      min-height: 85vh;
+      min-height: 100vh;
+      min-height: 100dvh; /* Para mobile moderno */
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
-      padding: 120px 0 80px;
+      padding: 80px 0 60px;
       background: 
         linear-gradient(
           135deg,
-          rgba(253, 251, 248, 0.95) 0%,
-          rgba(253, 251, 248, 0.88) 30%,
-          rgba(253, 251, 248, 0.82) 60%,
-          rgba(248, 243, 237, 0.78) 100%
+          rgba(253, 251, 248, 0.92) 0%,
+          rgba(253, 251, 248, 0.86) 40%,
+          rgba(248, 243, 237, 0.8) 100%
         ),
-        url('hero.jpg') center 20% / cover no-repeat;
-      background-attachment: fixed;
+        url('hero.jpg') center center / cover no-repeat;
+      background-attachment: scroll; /* Melhor performance no mobile */
     }
     
     .hero::before {
@@ -120,27 +121,28 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 30% 20%, rgba(232, 130, 72, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(243, 182, 131, 0.06) 0%, transparent 50%);
+        radial-gradient(circle at 30% 30%, rgba(232, 130, 72, 0.06) 0%, transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(243, 182, 131, 0.04) 0%, transparent 60%);
       pointer-events: none;
     }
     
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 720px;
-      padding: 48px;
+      max-width: 600px;
+      padding: 32px 24px;
       text-align: center;
-      border-radius: 32px;
+      border-radius: 24px;
+      margin: 0 auto;
     }
     
     .hero h1 {
-      font-size: clamp(32px, 5vw, 46px);
+      font-size: clamp(26px, 7vw, 46px);
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       letter-spacing: -0.03em;
       color: #1e1a16;
-      line-height: 1.15;
+      line-height: 1.2;
       background: linear-gradient(135deg, #2b2520 0%, #4a3f36 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -148,10 +150,10 @@
     }
     
     .hero p {
-      font-size: 18px;
+      font-size: 16px;
       color: #5a5047;
-      margin-bottom: 32px;
-      line-height: 1.7;
+      margin-bottom: 24px;
+      line-height: 1.65;
       font-weight: 400;
     }
     
@@ -160,7 +162,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 32px;
+      padding: 14px 28px;
       border-radius: 50px;
       font-weight: 600;
       font-size: 15px;
@@ -184,6 +186,7 @@
       transition: opacity 0.4s ease;
     }
     
+    .btn:active::before,
     .btn:hover::before {
       opacity: 1;
     }
@@ -197,82 +200,70 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
     
-    .btn-primary:hover {
-      transform: translateY(-2px);
+    .btn-primary:active {
+      transform: translateY(-1px);
       box-shadow: 
-        0 8px 24px rgba(232, 130, 72, 0.3),
-        0 12px 40px rgba(232, 130, 72, 0.2),
+        0 6px 20px rgba(232, 130, 72, 0.3),
+        0 10px 36px rgba(232, 130, 72, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-    
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.9);
-      color: #922604;
-      border: 1px solid rgba(232, 130, 72, 0.2);
-      box-shadow: 
-        0 2px 8px rgba(146, 38, 4, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
-    
-    .btn-secondary:hover {
-      background: white;
-      transform: translateY(-2px);
-      box-shadow: 
-        0 4px 16px rgba(146, 38, 4, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
     }
     
     /* Sections */
     section {
-      padding: 100px 0;
+      padding: 60px 0;
       position: relative;
     }
     
     .section-title {
-      font-size: clamp(28px, 4vw, 38px);
+      font-size: clamp(24px, 6vw, 38px);
       font-weight: 700;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       letter-spacing: -0.02em;
       color: #1e1a16;
+      line-height: 1.2;
       background: linear-gradient(135deg, #2b2520 0%, #4a3f36 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      padding: 0 16px;
     }
     
     .section-subtitle {
       text-align: center;
       color: #5a5047;
-      font-size: 17px;
+      font-size: 15px;
       max-width: 700px;
-      margin: 0 auto 48px;
-      line-height: 1.7;
+      margin: 0 auto 36px;
+      line-height: 1.65;
       font-weight: 400;
+      padding: 0 16px;
     }
     
-    /* Sobre premium */
+    /* Sobre premium - MOBILE FIRST */
     .sobre-grid {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 40px;
-      align-items: start;
-      padding: 48px;
-      border-radius: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 32px 24px;
+      border-radius: 24px;
+      text-align: center;
     }
     
     .avatar {
-      width: 180px;
-      height: 180px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       overflow: hidden;
-      border: 3px solid rgba(255, 255, 255, 0.8);
+      border: 3px solid rgba(255, 255, 255, 0.9);
       box-shadow: 
         0 0 0 1px rgba(232, 130, 72, 0.1),
-        0 0 0 12px rgba(232, 130, 72, 0.04),
-        0 20px 40px rgba(146, 38, 4, 0.12),
-        0 8px 16px rgba(232, 130, 72, 0.08);
+        0 0 0 10px rgba(232, 130, 72, 0.04),
+        0 16px 32px rgba(146, 38, 4, 0.12),
+        0 6px 12px rgba(232, 130, 72, 0.08);
       position: relative;
+      flex-shrink: 0;
     }
     
     .avatar::after {
@@ -282,7 +273,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(232, 130, 72, 0.1) 0%, transparent 50%);
+      background: linear-gradient(135deg, rgba(232, 130, 72, 0.08) 0%, transparent 50%);
       pointer-events: none;
     }
     
@@ -293,33 +284,34 @@
     }
     
     .sobre-text h2 {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: #1e1a16;
       letter-spacing: -0.02em;
     }
     
     .sobre-text p {
       color: #5a5047;
-      margin-bottom: 14px;
-      line-height: 1.8;
-      font-size: 16px;
+      margin-bottom: 12px;
+      line-height: 1.7;
+      font-size: 15px;
     }
     
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin: 24px 0;
+      gap: 10px;
+      margin: 20px 0;
+      justify-content: center;
     }
     
     .tag {
-      padding: 10px 18px;
+      padding: 8px 16px;
       background: linear-gradient(135deg, rgba(232, 130, 72, 0.08) 0%, rgba(243, 182, 131, 0.06) 100%);
       border: 1px solid rgba(232, 130, 72, 0.15);
       border-radius: 50px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       color: #922604;
       box-shadow: 
@@ -328,12 +320,12 @@
     }
     
     .foto-apoio {
-      margin-top: 48px;
-      border-radius: 24px;
+      margin-top: 36px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 
-        0 20px 50px rgba(146, 38, 4, 0.1),
-        0 8px 20px rgba(232, 130, 72, 0.08);
+        0 16px 40px rgba(146, 38, 4, 0.1),
+        0 6px 16px rgba(232, 130, 72, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.8);
       position: relative;
     }
@@ -356,43 +348,43 @@
       display: block;
     }
     
-    /* Cards Grid Premium */
+    /* Cards Grid Premium - MOBILE FIRST */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 36px;
     }
     
     .card {
-      padding: 32px 28px;
-      min-height: 180px;
+      padding: 24px 20px;
+      min-height: 160px;
       display: flex;
       flex-direction: column;
-      border-radius: 24px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 20px;
+      transition: all 0.3s ease;
     }
     
-    .card:hover {
-      transform: translateY(-6px);
+    .card:active {
+      transform: translateY(-2px);
       box-shadow: 
-        0 24px 60px rgba(146, 38, 4, 0.1),
-        0 12px 30px rgba(232, 130, 72, 0.08),
+        0 20px 50px rgba(146, 38, 4, 0.1),
+        0 10px 25px rgba(232, 130, 72, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 1);
     }
     
     .card-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
       background: linear-gradient(135deg, rgba(232, 130, 72, 0.12) 0%, rgba(243, 182, 131, 0.08) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       box-shadow: 
-        0 0 24px rgba(232, 130, 72, 0.15),
-        0 4px 12px rgba(232, 130, 72, 0.08),
+        0 0 20px rgba(232, 130, 72, 0.15),
+        0 4px 10px rgba(232, 130, 72, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.4),
         inset 0 -1px 0 rgba(232, 130, 72, 0.1);
       border: 1px solid rgba(232, 130, 72, 0.15);
@@ -407,21 +399,21 @@
       width: 100%;
       height: 100%;
       background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-      border-radius: 16px;
+      border-radius: 14px;
       pointer-events: none;
     }
     
     .card-icon svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       stroke: #e88248;
-      filter: drop-shadow(0 2px 8px rgba(232, 130, 72, 0.2));
+      filter: drop-shadow(0 2px 6px rgba(232, 130, 72, 0.2));
     }
     
     .card h3 {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #1e1a16;
       letter-spacing: -0.01em;
     }
@@ -429,53 +421,53 @@
     .card p {
       color: #5a5047;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.65;
       font-weight: 400;
     }
     
     /* CTA Final Premium */
     .cta-final {
       text-align: center;
-      padding: 60px 48px;
-      border-radius: 32px;
+      padding: 40px 28px;
+      border-radius: 24px;
     }
     
     .cta-final h2 {
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: #1e1a16;
       letter-spacing: -0.02em;
     }
     
     .cta-final p {
       color: #5a5047;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.7;
-      font-size: 16px;
+      font-size: 15px;
     }
     
     /* WhatsApp Float Premium */
     .whatsapp-float {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 64px;
-      height: 64px;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
       background: linear-gradient(135deg, #34e27a 0%, #25D366 50%, #1cb65d 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 
-        0 0 0 8px rgba(37, 211, 102, 0.12),
-        0 0 32px rgba(37, 211, 102, 0.4),
-        0 12px 32px rgba(0, 0, 0, 0.15),
+        0 0 0 6px rgba(37, 211, 102, 0.12),
+        0 0 28px rgba(37, 211, 102, 0.4),
+        0 10px 28px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       z-index: 1000;
       text-decoration: none;
       border: 2px solid rgba(255, 255, 255, 0.3);
@@ -493,18 +485,18 @@
       pointer-events: none;
     }
     
-    .whatsapp-float:hover {
-      transform: translateY(-4px) scale(1.05);
+    .whatsapp-float:active {
+      transform: translateY(-2px) scale(1.02);
       box-shadow: 
-        0 0 0 12px rgba(37, 211, 102, 0.15),
-        0 0 48px rgba(37, 211, 102, 0.5),
-        0 16px 40px rgba(0, 0, 0, 0.2),
+        0 0 0 8px rgba(37, 211, 102, 0.15),
+        0 0 36px rgba(37, 211, 102, 0.5),
+        0 12px 32px rgba(0, 0, 0, 0.2),
         inset 0 2px 0 rgba(255, 255, 255, 0.4);
     }
     
     .whatsapp-float svg {
-      width: 34px;
-      height: 34px;
+      width: 30px;
+      height: 30px;
       position: relative;
       z-index: 1;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
@@ -521,7 +513,7 @@
         rgba(232, 130, 72, 0.15) 80%,
         transparent 100%
       );
-      margin: 80px 0;
+      margin: 50px 0;
       position: relative;
     }
     
@@ -531,65 +523,185 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background: linear-gradient(135deg, #e88248 0%, #d47038 100%);
       border-radius: 50%;
       box-shadow: 
-        0 0 0 4px rgba(232, 130, 72, 0.1),
-        0 0 20px rgba(232, 130, 72, 0.2);
+        0 0 0 3px rgba(232, 130, 72, 0.1),
+        0 0 16px rgba(232, 130, 72, 0.2);
     }
     
-    /* Responsive */
-    @media (max-width: 768px) {
-      body {
-        background-attachment: scroll;
-      }
-      
+    /* TABLET E DESKTOP */
+    @media (min-width: 768px) {
       .hero {
-        padding: 100px 0 60px;
-        background-position: center 15%;
-        background-attachment: scroll;
+        min-height: 85vh;
+        padding: 100px 0 70px;
+        background-attachment: fixed;
       }
       
       .hero-content {
-        padding: 36px 28px;
-        border-radius: 24px;
+        padding: 44px 40px;
+        border-radius: 28px;
+        max-width: 720px;
       }
       
-      .sobre-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 36px 28px;
-        border-radius: 24px;
+      .hero h1 {
+        margin-bottom: 20px;
       }
       
-      .avatar {
-        margin: 0 auto;
-        width: 160px;
-        height: 160px;
+      .hero p {
+        font-size: 18px;
+        margin-bottom: 28px;
+        line-height: 1.7;
       }
       
-      .tags {
-        justify-content: center;
+      .btn {
+        padding: 16px 32px;
       }
       
-      .cards-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+          0 8px 24px rgba(232, 130, 72, 0.3),
+          0 12px 40px rgba(232, 130, 72, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
       }
       
       section {
-        padding: 70px 0;
+        padding: 80px 0;
       }
       
-      .cta-final {
-        padding: 40px 28px;
+      .section-title {
+        margin-bottom: 16px;
+      }
+      
+      .section-subtitle {
+        font-size: 17px;
+        margin-bottom: 44px;
+      }
+      
+      .sobre-grid {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 36px;
+        padding: 44px;
+        text-align: left;
+        border-radius: 28px;
+      }
+      
+      .avatar {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .sobre-text h2 {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+      
+      .sobre-text p {
+        font-size: 16px;
+        margin-bottom: 14px;
+        line-height: 1.8;
+      }
+      
+      .tags {
+        justify-content: flex-start;
+        gap: 12px;
+        margin: 24px 0;
+      }
+      
+      .tag {
+        padding: 10px 18px;
+        font-size: 13px;
+      }
+      
+      .foto-apoio {
+        margin-top: 44px;
         border-radius: 24px;
       }
       
+      .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-top: 44px;
+      }
+      
+      .card {
+        padding: 30px 26px;
+        min-height: 180px;
+        border-radius: 22px;
+      }
+      
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 
+          0 24px 60px rgba(146, 38, 4, 0.1),
+          0 12px 30px rgba(232, 130, 72, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 1);
+      }
+      
+      .card-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        margin-bottom: 18px;
+      }
+      
+      .card-icon svg {
+        width: 26px;
+        height: 26px;
+      }
+      
+      .card h3 {
+        font-size: 19px;
+        margin-bottom: 10px;
+      }
+      
+      .cta-final {
+        padding: 56px 44px;
+        border-radius: 28px;
+      }
+      
+      .cta-final h2 {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+      
+      .cta-final p {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+      
+      .whatsapp-float {
+        width: 64px;
+        height: 64px;
+        bottom: 28px;
+        right: 28px;
+      }
+      
+      .whatsapp-float svg {
+        width: 34px;
+        height: 34px;
+      }
+      
+      .whatsapp-float:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 
+          0 0 0 12px rgba(37, 211, 102, 0.15),
+          0 0 48px rgba(37, 211, 102, 0.5),
+          0 16px 40px rgba(0, 0, 0, 0.2),
+          inset 0 2px 0 rgba(255, 255, 255, 0.4);
+      }
+      
       .divider {
-        margin: 60px 0;
+        margin: 70px 0;
+      }
+      
+      .divider::before {
+        width: 8px;
+        height: 8px;
       }
     }
   </style>
@@ -640,7 +752,7 @@
         </div>
       </div>
       
-      <div class="container" style="max-width: 800px; margin-top: 48px;">
+      <div class="container" style="max-width: 800px; margin-top: 44px;">
         <div class="foto-apoio">
           <img src="sobre.jpg" alt="Consultório Aline Housni">
         </div>
@@ -717,7 +829,7 @@
       <h2 class="section-title">Esse atendimento pode fazer sentido se</h2>
       <p class="section-subtitle">Você não precisa estar no "pior momento" para buscar ajuda.</p>
       
-      <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="cards-grid" style="grid-template-columns: 1fr;">
         <div class="card glass">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
